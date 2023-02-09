@@ -22,7 +22,7 @@ def main():
     config = read_config()
     
     download_link = config['AppSettings']['update_file_url']
-    save_to_path = resource_path("HQCPQ.exe")
+    save_to_path = os.path.abspath(os.path.abspath("."), os.pardir)
 
     filename, headers = urllib.request.urlretrieve(download_link, save_to_path)
 
