@@ -1,6 +1,7 @@
 import urllib.request
 import configparser
 import os
+import sys
 
 def resource_path(relative_path):
 
@@ -24,7 +25,13 @@ def main():
     download_link = config['AppSettings']['update_file_url']
     save_to_path = os.path.join(os.path.abspath("."), "HQCPQ.exe")
 
+    if os.path.exists(save_to_path):
+        os.remove(save_to_path)
+
+    print("Starting download.")
     filename, headers = urllib.request.urlretrieve(download_link, save_to_path)
+
+    sys.exit()
 
 if __name__ == "__main__":
     main()
